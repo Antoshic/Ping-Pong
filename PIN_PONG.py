@@ -35,26 +35,23 @@ class GameSprite(sprite.Sprite):
 class Player(GameSprite):
     def update(self):
         keys = key.get_pressed()
-        if keys[K_LEFT] and self.rect.x > 5:
-            self.rect.x -= self.speed
-        if keys[K_RIGHT] and self.rect.x < win_width - 80:
-            self.rect.x += self.speed
+        if keys[K_w] and self.rect.y  > 5:
+            self.rect.y -=  self.speed
+        if keys[K_s] and self.rect.x < win_height - 80:
+            self.rect.y +=  self.speed
 class Player2(GameSprite):
     def update(self):
         keys = key.get_pressed()
-        if keys[K_LEFT] and self.rect.x > 5:
-            self.rect.x -= self.speed
-        if keys[K_RIGHT] and self.rect.x < win_width - 80:
-            self.rect.x += self.speed
+        if keys[K_UP] and self.rect.y  > 5:
+            self.rect.y -=  self.speed
+        if keys[K_DOWN] and self.rect.x < win_height - 80:
+            self.rect.y +=  self.speed
     
 
 
 
- = Player("rocket.png", 5, win_height - 100, 10, 80, 100)
-monsters = sprite.Group()
-for f in range(5):
-    monster = Enemy('ufo.png', randint(80, win_width- 80), -50, 2, 80, 50)
-    monsters.add(monster)"""
+player = Player("racket.png", 3, win_height - 100, 10, 11, 100)
+player2 = Player2("racket.png", 600, win_height - 50, 10, 11, 100)
 
 
 
@@ -68,19 +65,16 @@ while game:
             game = False
     if not finish:
         window.blit(background, (0, 0))
-        """ship.update()
-        ship.reset()
+        player.update()
+        player.reset()
 
-        monsters.update()
-        monsters.draw(window)
-        bullets.update()
-        bullets.draw(window)
+        player2.update()
+        player2.reset()
         
-        text_lose = font2.render("Пропущено: " + str(lost), 1, (255, 255, 255))
-        window.blit(text_lose, (10, 50))"""
 
         
         clock.tick(FPS)
         display.update()
 
     time.delay(50)
+
